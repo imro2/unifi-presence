@@ -5,30 +5,25 @@
     <minor>5</minor>
   </specVersion>
   <device>
-    <deviceType>urn:schemas-livehouse-automation:device:UnifiSensor:1</deviceType>
+    <deviceType>urn:schemas-peterv-vera:device:UnifiSensor:1</deviceType>
     <staticJson>D_UnifiSensor.json</staticJson>
     <friendlyName>Unifi Sensor</friendlyName>
     <manufacturer>LiveHouse Automation - Antony Winn</manufacturer>
     <protocol>cr</protocol>
-    <handleChildren>0</handleChildren>
-    <UDN>uuid:Upnp-livehouse-automation-1_0-0000000000001</UDN>
+    <handleChildren>1</handleChildren>
+    <UDN>uuid:Upnp-peterv-vera-1_0-0000000000001</UDN>
     <UPC>000000001</UPC>
     <serviceList>
       <service>
-        <serviceType>urn:schemas-livehouse-automation:service:UnifiSensor:1</serviceType>
-        <serviceId>urn:livehouse-automation:serviceId:UnifiSensor1</serviceId>
+        <serviceType>urn:schemas-peterv-vera:service:UnifiSensor:1</serviceType>
+        <serviceId>urn:peterv-vera:serviceId:UnifiSensor1</serviceId>
         <SCPDURL>S_UnifiSensor.xml</SCPDURL>
       </service>
-      <service>
-        <serviceType>urn:schemas-micasaverde-com:service:SecuritySensor:1</serviceType>
-        <serviceId>urn:micasaverde-com:serviceId:SecuritySensor1</serviceId>
-        <SCPDURL>S_SecuritySensor1.xml</SCPDURL>
-      </service>
-      <service>
-        <serviceType>urn:schemas-upnp-org:service:SwitchPower:1</serviceType>
-        <serviceId>urn:upnp-org:serviceId:SwitchPower1</serviceId>
-        <SCPDURL>S_SwitchPower1.xml</SCPDURL>
-      </service>
+	  <service>
+		<serviceType>urn:schemas-micasaverde-com:service:HaDevice:1</serviceType>
+		<serviceId>urn:micasaverde-com:serviceId:HaDevice1</serviceId>
+		<SCPDURL>S_HaDevice1.xml</SCPDURL>
+	  </service>
     </serviceList>
     <implementationList>
       <implementationFile>I_UnifiSensor.xml</implementationFile>
