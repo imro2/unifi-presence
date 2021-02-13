@@ -311,7 +311,8 @@ local function http_request(path, payload, method)
                                 sink = ltn12.sink.table(response)
                                  }   
   
-  
+  code = tonumber(code) or 500  
+
   if DEBUG_MODE then 
     debugMsg = "Status:" .. (body and "OK" or "FAILED") .. "\n"
     debugMsg = debugMsg .. "HTTP code:" .. code .. "\n"
@@ -336,6 +337,8 @@ local function http_request(path, payload, method)
         end
       end
     end
+  else
+    log("Connection failed: HTTP code: %1 URL: %2", code, url)
   end
   
   return body, code, table.concat(response)
@@ -411,7 +414,11 @@ local function request(path, payload, retries)
     return nil, {}
   end
   
-
+  if (not body) or code < 200 or code >= 400 then
+    setLoggedIn(false, PARENT_DEVICE)
+    luup.set_failure(true, PARENT_DEVICE)
+  end
+  
   return code, response
   
 end
@@ -530,8 +537,8 @@ function unifi_init(dev)
 	if getVarNumeric("DebugMode",0,dev,UNIFI_SID) ~= 0 then
 		DEBUG_MODE = true
 		debug("plugin_init(): Debug enabled by DebugMode state variable")
-  else
-    DEBUG_MODE = false
+    else
+        DEBUG_MODE = false
 	end
 
 	-- Check for ALTUI and OpenLuup. ??? need quicker, cleaner check
