@@ -6,7 +6,7 @@ Vera Plugin for Presence Detection using a Unifi Controller
 
 This is based on the unifi-Sensor plugin by BlueSmurf/livehouse-automation. It also heavily borrows from rigpapa's VirtualSensor plugin.
 
-My first attempt was just to replace the shell script for lua code, but then I got carried away and redesigned the plugin. It now logs in and stays logged in. It has one main device that represents connection to the Unifi controller and then as many child devices as you want monitor for presence. It requires a MAC address, where the original plugin could use device name or IP. Instead of getting a list of all devices, it checks each MAC separately and only retrieves information for that device. This way it does not matter how may devices are in your Unifi site.
+My first attempt was just to replace the shell script for lua code, but then I got carried away and redesigned the plugin. It now logs in and stays logged in. It has one main device that represents connection to the Unifi controller and then as many child devices as you want to monitor for presence. It requires a MAC address, where the original plugin could use device name or IP. Instead of getting a list of all devices, it checks each MAC separately and only retrieves information for that device. This way, it does not matter how may devices are in your Unifi site.
 
 Introduction:
 
@@ -36,7 +36,7 @@ Create a separate **local** user on your Unifi Controller for Vera to use, do no
 
 In the UI for the device, go into the Settings tab and provide the information needed - it should be self-explanatory.
 
-After that go to Virtual Sensors tab and add new child devices using the Create Virtual Sensor button. When you click the button, wait until the new device appears in the list above. Once there, fill in a MAC address in the text box and possibly rename the device by clicking on its name. Wait a minute for first poll to occur after which you should see a time stamp under Last Update.
+After that go to Virtual Sensors tab and add new child devices using the Create Virtual Sensor button. When you click the button, wait until the new device appears in the list above. Once there, fill in the MAC and possibly rename the device by clicking on its name. Wait a minute for first poll to occur, after which you should see a time stamp under Last Update.
 
 The parent device icon will show Green if you have at least one virtual sensor with a MAC address configured and the sensor was able to successfully authenticate with the controller.
 
