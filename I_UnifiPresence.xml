@@ -7,18 +7,18 @@
   <settings>
     <protocol>cr</protocol>
   </settings>
-  <files>L_UnifiSensor1.lua</files>
+  <files>L_UnifiPresence1.lua</files>
   <startup>unifi_init</startup>
   <actionList>
 	<action>
-		<serviceId>urn:peterv-vera:serviceId:UnifiSensor1</serviceId>
+		<serviceId>urn:imro2-github:serviceId:UnifiPresence1</serviceId>
 		<name>AddChild</name>
 		<job>
 			return actionAddChild( lul_device )
 		</job>
 	</action>
 	<action>
-		<serviceId>urn:peterv-vera:serviceId:UnifiSensor1</serviceId>
+		<serviceId>urn:imro2-github:serviceId:UnifiPresence1</serviceId>
 		<name>SetSensorName</name>
 		<run>
 			-- Set sensor name without forcing a Luup reload.
@@ -29,15 +29,15 @@
 		</run>
 	</action>
 	<action>
-		<serviceId>urn:peterv-vera:serviceId:UnifiSensor1</serviceId>
+		<serviceId>urn:imro2-github:serviceId:UnifiPresence1</serviceId>
 		<name>SetEnabled</name>
 		<run>
-			luup.variable_set( "urn:peterv-vera:serviceId:UnifiSensor1", "Enabled",
+			luup.variable_set( "urn:imro2-github:serviceId:UnifiPresence1", "Enabled",
 				lul_settings.newEnabledValue, lul_device )
 		</run>
 	</action>
 	<action>
-		<serviceId>urn:peterv-vera:serviceId:UnifiSensor1</serviceId>
+		<serviceId>urn:imro2-github:serviceId:UnifiPresence1</serviceId>
 		<name>SetDebug</name>
 		<run>
 			actionSetDebug( lul_device, lul_settings.debug )

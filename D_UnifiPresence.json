@@ -6,7 +6,7 @@
             "img": "https://cdn.shopify.com/s/files/1/0961/2526/files/unifi_blue_48x48_c78d6828-ba23-4753-b2f4-e80f0a9c630a.png",
             "conditions": [
                 {
-                    "service": "urn:peterv-vera:serviceId:UnifiSensor1",
+                    "service": "urn:imro2-github:serviceId:UnifiPresence1",
                     "variable": "LoggedIn",
                     "operator": "==",
                     "value": 0
@@ -17,7 +17,7 @@
             "img": "https://cdn.shopify.com/s/files/1/0961/2526/files/unifi_green_48x48_11a6a50b-dd45-4a57-aa11-c9bc6bd477bf.png",
             "conditions": [
                 {
-                    "service": "urn:peterv-vera:serviceId:UnifiSensor1",
+                    "service": "urn:imro2-github:serviceId:UnifiPresence1",
                     "variable": "LoggedIn",
                     "operator": "==",
                     "value": 1
@@ -30,7 +30,7 @@
     "y": "4",
     "inScene": "1",
     "DisplayStatus": {
-        "Service": "urn:peterv-vera:serviceId:UnifiSensor1",
+        "Service": "urn:imro2-github:serviceId:UnifiPresence1",
         "Variable": "LoggedIn",
         "MinValue": "0",
         "MaxValue": "1"
@@ -80,12 +80,12 @@
 								"text": "Enabled"
 							},
 							"Display": {
-								"Service": "urn:peterv-vera:serviceId:UnifiSensor1",
+								"Service": "urn:imro2-github:serviceId:UnifiPresence1",
 								"Variable": "Enabled",
 								"Value": "1"
 							},
 							"Command": {
-								"Service": "urn:peterv-vera:serviceId:UnifiSensor1",
+								"Service": "urn:imro2-github:serviceId:UnifiPresence1",
 								"Action": "SetEnabled",
 								"Parameters": [{
 									"Name": "newEnabledValue",
@@ -100,12 +100,12 @@
 								"text": "Disabled"
 							},
 							"Display": {
-								"Service": "urn:peterv-vera:serviceId:UnifiSensor1",
+								"Service": "urn:imro2-github:serviceId:UnifiPresence1",
 								"Variable": "Enabled",
 								"Value": "0"
 							},
 							"Command": {
-								"Service": "urn:peterv-vera:serviceId:UnifiSensor1",
+								"Service": "urn:imro2-github:serviceId:UnifiPresence1",
 								"Action": "SetEnabled",
 								"Parameters": [{
 									"Name": "newEnabledValue",
@@ -126,8 +126,8 @@
 			"TopNavigationTab": "1",
             "Position": "1",
             "TabType": "javascript",
-            "ScriptName": "J_UnifiSensor.js",
-            "Function": "UnifiSensor.UnifiSensorSettings"
+            "ScriptName": "J_UnifiPresence.js",
+            "Function": "UnifiPresence.UnifiPresenceSettings"
         },
 		{
 			"Label": {
@@ -137,8 +137,8 @@
 			"Position": "2",
 			"TopNavigationTab": "1",
 			"TabType": "javascript",
-			"ScriptName": "J_UnifiSensor.js",
-			"Function": "UnifiSensor.doVirtualSensors"
+			"ScriptName": "J_UnifiPresence.js",
+			"Function": "UnifiPresence.doVirtualSensors"
 		},
         {
             "Label": {
@@ -173,5 +173,5 @@
             "Function": "device_notifications"
         }
     ],
-    "DeviceType": "urn:schemas-peterv-vera:device:UnifiSensor:1"
+    "DeviceType": "urn:schemas-imro2-github:device:UnifiPresence:1"
 }

@@ -1,12 +1,21 @@
-**This is an alpha version. It will undergo a rename to both files and device ids.** 
-**Only minimal changes were made to the readme to make it less confusing given the different functionality and configuration**
+**This is an alpha version.
+
+** Update: All files as well as device IDs were renamed to make this a separate plugin from the unifi-sensor. If you managed to install the old version (before 2/14/2020), please start from scratch by uploading new file and recreating the device as well as virtual sensors. You might also want to delete the old files:
+
+- ** D_UnifiSensor.json
+- ** D_UnifiSensor.xml
+- ** I_UnifiSensor.xml
+- ** S_UnifiSensor.xml
+- ** J_UnifiSensor.js
+- ** L_UnifiSensor.lua
+
 
 # unifi-sensor
 Vera Plugin for Presence Detection using a Unifi Controller
 
 This is based on the unifi-Sensor plugin by BlueSmurf/livehouse-automation. It also heavily borrows from rigpapa's VirtualSensor plugin.
 
-My first attempt was just to replace the shell script for lua code, but then I got carried away and redesigned the plugin. It now logs in and stays logged in. It has one main device that represents connection to the Unifi controller and then as many child devices as you want to monitor for presence. It requires a MAC address, where the original plugin could use device name or IP. Instead of getting a list of all devices, it checks each MAC separately and only retrieves information for that device. This way, it does not matter how may devices are in your Unifi site.
+My first attempt was just to replace the shell script for lua code, but then I got carried away and redesigned the plugin. It now logs in and stays logged in. It has one main device that represents connection to the Unifi controller and as many child devices as you want to monitor for presence. It requires a MAC address, where the original plugin could use device name or IP. Instead of getting a list of all devices, it checks each MAC separately and only retrieves information for that device. This way, it does not matter how may devices are in your Unifi site.
 
 Introduction:
 
@@ -16,17 +25,17 @@ Installation:
 
 Download the plugin files.Copy these files to Vera using Apps->Develop Apps->Luup Files
 
-- D_UnifiSensor.json
-- D_UnifiSensor.xml
-- I_UnifiSensor.xml
-- S_UnifiSensor.xml
-- J_UnifiSensor.js
-- L_UnifiSensor.lua
+- D_UnifiPresence.json
+- D_UnifiPresence.xml
+- I_UnifiPresence.xml
+- S_UnifiPresence.xml
+- J_UnifiPresence.js
+- L_UnifiPresence.lua
 
 Once the files are in place, create a new device in Apps->Develop Apps->Create Device. Fill in following text boxes:
 
-Upnp Device Filename: D_UnifiSensor.xml 
-Upnp Implementation Filename: I_UnifiSensor.xml
+- Upnp Device Filename: D_UnifiPresence.xml 
+- Upnp Implementation Filename: I_UnifiPresence.xml
 
 **You'll need to reload the Luup Engine and refresh your browser before the device will appear in the UI.**
 

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<root xmlns="urn:schemas-upnp-org:device-1-0">
+  <specVersion>
+    <major>1</major>
+    <minor>5</minor>
+  </specVersion>
+  <device>
+    <deviceType>urn:schemas-imro2-github:device:UnifiPresence:1</deviceType>
+    <staticJson>D_UnifiPresence.json</staticJson>
+    <friendlyName>Unifi Presence</friendlyName>
+    <manufacturer>imro2 https://github.com/imro2/unifi-presence</manufacturer>
+    <protocol>cr</protocol>
+    <handleChildren>1</handleChildren>
+    <UDN>uuid:Upnp-imro2-github-1_0-0000000000001</UDN>
+    <UPC>000000001</UPC>
+    <serviceList>
+      <service>
+        <serviceType>urn:schemas-imro2-github:service:UnifiPresence:1</serviceType>
+        <serviceId>urn:imro2-github:serviceId:UnifiPresence1</serviceId>
+        <SCPDURL>S_UnifiPresence.xml</SCPDURL>
+      </service>
+	  <service>
+		<serviceType>urn:schemas-micasaverde-com:service:HaDevice:1</serviceType>
+		<serviceId>urn:micasaverde-com:serviceId:HaDevice1</serviceId>
+		<SCPDURL>S_HaDevice1.xml</SCPDURL>
+	  </service>
+    </serviceList>
+    <implementationList>
+      <implementationFile>I_UnifiPresence.xml</implementationFile>
+    </implementationList>
+  </device>
+</root>

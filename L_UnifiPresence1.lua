@@ -1,19 +1,19 @@
 -- -----------------------------------------------------------------------------
--- L_UnifiSensor1.lua
+-- L_UnifiPresence1.lua
 -- This file is available under GPL 3.0. See LICENSE in documentation for info.
 --
 -- Based on UnifiSensor pluggin by LiveHouse Automation 
 -- https://www.livehouseautomation.com.au/
--- https://github.com/peterv-vera/unifi-sensor
+-- https://github.com/imro2-github/unifi-sensor
 -- 
 -- Significant portions of code used from  VirtualSensor pluggin by Patrick H. Rigney
 -- http://www.toggledbits.com/
 -- https://github.com/toggledbits/VirtualSensor
 -- -----------------------------------------------------------------------------
 
---module("L_UnifiSensor1", package.seeall)
+--module("L_UnifiPresence1", package.seeall)
 
-local _PLUGIN_NAME = "UnifiSensor"
+local _PLUGIN_NAME = "UnifiPresence"
 local _PLUGIN_VERSION = "0.1"
 local _PLUGIN_URL = "http://"
 
@@ -24,8 +24,8 @@ local https = require('ssl.https')
 https.TIMEOUT= 10
 local ltn12 = require("ltn12")
 
-local UNIFI_SID = "urn:peterv-vera:serviceId:UnifiSensor1"
-local UNIFI_TYPE = "urn:schemas-peterv-vera:device:UnifiSensor:1"
+local UNIFI_SID = "urn:imro2-github:serviceId:UnifiPresence1"
+local UNIFI_TYPE = "urn:schemas-imro2-github:device:UnifiPresence:1"
 local SECURITY_SID = "urn:micasaverde-com:serviceId:SecuritySensor1"
 local HADEVICE_SID = "urn:micasaverde-com:serviceId:HaDevice1"
 local GATEWAY_SID = "urn:micasaverde-com:serviceId:HomeAutomationGateway1"
@@ -303,30 +303,35 @@ local function http_request(path, payload, method)
   
   local response = {}
 
-  local body, code, headers = https.request{
+  local body, code, headers, status = https.request{
                                 method = method,
                                 url = url,
                                 headers = request_headers,
-                                source = request_source,        
+                                source = request_source,
+                                verify = "none",
+                                protocol = "any",
+                                options = "all",
                                 sink = ltn12.sink.table(response)
-                                 }   
-  
-  code = tonumber(code) or 500  
+                               }
 
   if DEBUG_MODE then 
-    debugMsg = "Status:" .. (body and "OK" or "FAILED") .. "\n"
-    debugMsg = debugMsg .. "HTTP code:" .. code .. "\n"
+    debugMsg = "Request results:\n"
+    debugMsg = "Body: " .. tostring(body) .. "\n"
+    debugMsg = debugMsg .. "HTTP code: " .. tostring(code) .. "\n"
     debugMsg = debugMsg .. "Response headers:\n"
     if type(headers) == "table" then
       for k, v in pairs(headers) do
         debugMsg = debugMsg .. "\t" .. k .. ":" .. v .. "\n"        
       end
+    else
+      debugMsg = debugMsg .. tostring(headers) .. "\n"
     end
+    debugMsg = debugMsg .. "Status: " .. tostring(status) .. "\n"
     debugMsg = debugMsg .. "Response payload: " .. table.concat(response or {})
     debug(debugMsg)
   end
-  
-  if code>=200 and code < 400 then 
+
+  if body and code>=200 and code < 400 then 
     if type(headers) == "table" then
       for k, v in pairs(headers) do
         if k == "set-cookie" then
@@ -338,7 +343,8 @@ local function http_request(path, payload, method)
       end
     end
   else
-    log("Connection failed: HTTP code: %1 URL: %2", code, url)
+    log("Connection failed: HTTP code: %1 URL: %2", tostring(code), url)
+    code = tonumber(code) or 500
   end
   
   return body, code, table.concat(response)
@@ -555,7 +561,7 @@ function unifi_init(dev)
   initSettings( dev )
 
   -- Register request handler
-  luup.register_handler("requestHandler", "UnifiSensor")
+  luup.register_handler("requestHandler", "UnifiPresence")
 
 
   --
