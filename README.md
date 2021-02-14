@@ -10,7 +10,7 @@
 - **L_UnifiSensor.lua**
 
 
-# unifi-sensor
+# unifi-presence
 Vera Plugin for Presence Detection using a Unifi Controller
 
 This is based on the unifi-Sensor plugin by BlueSmurf/livehouse-automation. It also heavily borrows from rigpapa's VirtualSensor plugin.
