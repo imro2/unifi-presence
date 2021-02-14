@@ -1,13 +1,13 @@
-**This is an alpha version.
+**This is an alpha version.**
 
-** Update: All files as well as device IDs were renamed to make this a separate plugin from the unifi-sensor. If you managed to install the old version (before 2/14/2020), please start from scratch by uploading new file and recreating the device as well as virtual sensors. You might also want to delete the old files:
+**Update: All files as well as device IDs were renamed to make this a separate plugin from the unifi-sensor. If you managed to install the old version (before 2/14/2020), please start from scratch by uploading new file and recreating the device as well as virtual sensors. You might also want to delete the old files:**
 
-- ** D_UnifiSensor.json
-- ** D_UnifiSensor.xml
-- ** I_UnifiSensor.xml
-- ** S_UnifiSensor.xml
-- ** J_UnifiSensor.js
-- ** L_UnifiSensor.lua
+- **D_UnifiSensor.json**
+- **D_UnifiSensor.xml**
+- **I_UnifiSensor.xml**
+- **S_UnifiSensor.xml**
+- **J_UnifiSensor.js**
+- **L_UnifiSensor.lua**
 
 
 # unifi-sensor
