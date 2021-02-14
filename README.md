@@ -48,7 +48,3 @@ In the UI for the device, go into the Settings tab and provide the information n
 After that go to Virtual Sensors tab and add new child devices using the Create Virtual Sensor button. When you click the button, wait until the new device appears in the list above. Once there, fill in the MAC and possibly rename the device by clicking on its name. Wait a minute for first poll to occur, after which you should see a time stamp under Last Update.
 
 The parent device icon will show Green if you have at least one virtual sensor with a MAC address configured and the sensor was able to successfully authenticate with the controller.
-
-Future:
-
-- rename files and plugin to make it unique from livehouse-automation
