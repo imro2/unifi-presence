@@ -9,6 +9,7 @@
   </settings>
   <files>L_UnifiPresence1.lua</files>
   <startup>unifi_init</startup>
+  <handleChildren>1</handleChildren>
   <actionList>
 	<action>
 		<serviceId>urn:imro2-github:serviceId:UnifiPresence1</serviceId>
@@ -41,6 +42,13 @@
 		<name>SetDebug</name>
 		<run>
 			actionSetDebug( lul_device, lul_settings.debug )
+		</run>
+	</action>
+	<action>
+		<serviceId>urn:micasaverde-com:serviceId:SecuritySensor1</serviceId>
+		<name>SetArmed</name>
+		<run>
+			luup.variable_set("urn:micasaverde-com:serviceId:SecuritySensor1", "Armed", (lul_settings.newArmedValue or "0"), lul_device)
 		</run>
 	</action>
   </actionList>
